@@ -1,0 +1,6 @@
+[submodule "third_party/AntiStyler"]
+	path = third_party/AntiStyler
+	url = https://github.com/IdanYankelev/AntiStyler.git
+[submodule "third_party/yolov7"]
+	path = third_party/yolov7
+	url = https://github.com/WongKinYiu/yolov7.git

@@ -1,0 +1,50 @@
+# YOLOv7 GTSDB Training Configuration
+# This file documents the training protocol for fine-tuning YOLOv7 on GTSDB.
+# It is NOT a YOLOv7 model architecture YAML — that is in third_party/yolov7/cfg/training/yolov7.yaml
+
+# Model
+model_architecture: "third_party/yolov7/cfg/training/yolov7.yaml"
+pretrained_checkpoint: "third_party/yolov7/yolov7.pt"  # COCO pretrained
+dataset_config: "configs/datasets/gtsdb_yolov7.yaml"
+
+# Training Hyperparameters
+# Source: Conservative defaults for 8GB VRAM GPU (Quadro RTX 4000)
+image_size: 416          # Match dataset image size (416x416 from Roboflow export)
+batch_size: 8            # Conservative for 8GB VRAM
+epochs: 100              # Standard YOLOv7 fine-tuning
+optimizer: "SGD"         # YOLOv7 default
+learning_rate: 0.01      # YOLOv7 default initial LR
+momentum: 0.937          # YOLOv7 default
+weight_decay: 0.0005     # YOLOv7 default
+warmup_epochs: 3         # YOLOv7 default
+warmup_momentum: 0.8     # YOLOv7 default
+warmup_bias_lr: 0.1      # YOLOv7 default
+
+# Evaluation
+conf_threshold: 0.001    # For mAP evaluation (standard)
+iou_threshold: 0.65      # NMS IoU threshold for evaluation
+
+# Augmentation
+# YOLOv7 default augmentation pipeline (mosaic, mixup, etc.)
+# Note: Dataset is already augmented by Roboflow (v3-augmented)
+# Consider disabling mosaic/mixup if double-augmentation degrades performance
+
+# Reproducibility
+seed: 42
+
+# Hardware
+device: "0"              # GPU device ID
+workers: 4               # DataLoader workers
+
+# Training command (to be run from project root):
+# cd third_party/yolov7 && python train.py \
+#   --workers 4 \
+#   --device 0 \
+#   --batch-size 8 \
+#   --data ../../configs/datasets/gtsdb_yolov7.yaml \
+#   --img 416 416 \
+#   --cfg cfg/training/yolov7.yaml \
+#   --weights yolov7.pt \
+#   --name yolov7_gtsdb \
+#   --hyp data/hyp.scratch.p5.yaml \
+#   --epochs 100

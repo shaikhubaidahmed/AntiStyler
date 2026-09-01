@@ -1,0 +1,22 @@
+# AntiStyler Configuration
+# Source mappings:
+# PAPER: AntiStyler CVPR 2026 Paper
+# NOTEBOOK: Official AntiStyler_Demo.ipynb implementation
+# CONTRACT: Our agreed upon reproduction contract
+
+vgg_model: "vgg19" # PAPER/NOTEBOOK
+style_layers: ["conv_1", "conv_2", "conv_3", "conv_4", "conv_5"] # PAPER/NOTEBOOK
+content_layer: ["conv_4"] # PAPER/NOTEBOOK
+alpha: 1.0 # PAPER/NOTEBOOK (content_weight)
+beta: 1000.0 # PAPER/NOTEBOOK (style_weight)
+optimization_steps: 1 # PAPER/NOTEBOOK
+learning_rate: 0.05 # NOTEBOOK
+padding_size: 10 # PAPER/NOTEBOOK
+style_distribution: "uniform" # PAPER/CONTRACT (uniform over [0,1))
+raw_mask_percentile: 0.99 # NOTEBOOK (tau)
+dilation_kernel_1: 11 # NOTEBOOK
+erosion_kernel: 11 # NOTEBOOK
+mean_filter_kernel: 51 # NOTEBOOK
+binary_threshold: 0.5 # NOTEBOOK
+dilation_kernel_2: 11 # NOTEBOOK
+vgg19_weights: "/home/ms/.cache/torch/hub/checkpoints/vgg19-dcbb9e9d.pth" # Side-loaded offline checkpoint
