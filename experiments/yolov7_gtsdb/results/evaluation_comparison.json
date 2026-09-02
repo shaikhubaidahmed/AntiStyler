@@ -1,0 +1,15 @@
+{
+    "internal_mAP50": 0.314,
+    "coco_mAP50": 0.3164,
+    "absolute_difference_mAP50": 0.0024,
+    "relative_difference_mAP50": 0.0076,
+    "internal_mAP50_95": 0.201,
+    "coco_mAP50_95": 0.2025,
+    "test_images": 54,
+    "gt_annotations": 82,
+    "predictions": 12525,
+    "confidence_threshold": 0.001,
+    "nms_iou_threshold": 0.65,
+    "checkpoint_path": "/home/ms/Desktop/AntiStyler/experiments/yolov7_gtsdb/run/weights/best.pt",
+    "checkpoint_sha256": "fdc2e7a23f33ab3639fb325cd84ab405a477233dfad72e59358dcd91941aabb6"
+}

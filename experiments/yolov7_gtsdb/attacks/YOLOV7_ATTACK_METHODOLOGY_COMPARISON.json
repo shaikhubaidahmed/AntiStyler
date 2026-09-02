@@ -1,0 +1,214 @@
+{
+    "comparison": [
+        {
+            "id": 1,
+            "characteristic": "Attack name",
+            "source_evidence": "Adversarial Patch Attack (DPatch) [Notebook]",
+            "current_implementation": "YOLOv7PatchAttack",
+            "match_status": "PARTIAL MATCH"
+        },
+        {
+            "id": 2,
+            "characteristic": "Attack family",
+            "source_evidence": "Adversarial Patch (Gradient-based) [Notebook]",
+            "current_implementation": "Adversarial Patch (Gradient-based)",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 3,
+            "characteristic": "Attack objective",
+            "source_evidence": "Minimize supervised object detection training loss toward a target label at a specific target bounding box [Notebook]",
+            "current_implementation": "Maximize objectness * target_class_probability globally across all anchor boxes on all scales",
+            "match_status": "MISMATCH"
+        },
+        {
+            "id": 4,
+            "characteristic": "Targeted vs untargeted",
+            "source_evidence": "Targeted (target label 'Person' and specific bounding box) [Notebook]",
+            "current_implementation": "Targeted (target class 0 'ANIMALS', but globally maximized)",
+            "match_status": "PARTIAL MATCH"
+        },
+        {
+            "id": 5,
+            "characteristic": "Optimization variable",
+            "source_evidence": "Patch pixel tensor [Notebook]",
+            "current_implementation": "Patch pixel tensor",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 6,
+            "characteristic": "Patch initialization",
+            "source_evidence": "Random uniform [0, 1] (torch.rand) [Notebook]",
+            "current_implementation": "Random uniform [0, 1] (torch.rand)",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 7,
+            "characteristic": "Patch dimensions",
+            "source_evidence": "100x100 [Notebook]",
+            "current_implementation": "100x100",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 8,
+            "characteristic": "Patch placement",
+            "source_evidence": "min_y = int((H + patch_size) / 2), min_x = int((W + patch_size) / 2) [Notebook]",
+            "current_implementation": "Same, with boundary clamping",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 9,
+            "characteristic": "Number of optimization steps/epochs",
+            "source_evidence": "200 epochs [Notebook]",
+            "current_implementation": "50 epochs",
+            "match_status": "MISMATCH"
+        },
+        {
+            "id": 10,
+            "characteristic": "Optimizer",
+            "source_evidence": "Adam [Notebook]",
+            "current_implementation": "Adam",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 11,
+            "characteristic": "Learning rate",
+            "source_evidence": "0.1 [Notebook]",
+            "current_implementation": "0.1",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 12,
+            "characteristic": "Loss function",
+            "source_evidence": "Internal model training loss (e.g., standard Faster R-CNN loss components) [Notebook]",
+            "current_implementation": "Mean of -(objectness * class_probability) globally",
+            "match_status": "MISMATCH"
+        },
+        {
+            "id": 13,
+            "characteristic": "Objectness contribution",
+            "source_evidence": "Implicitly handled by the model's internal loss function [Notebook]",
+            "current_implementation": "Explicitly multiplied with class probability from the intermediate tensors",
+            "match_status": "PARTIAL MATCH"
+        },
+        {
+            "id": 14,
+            "characteristic": "Classification contribution",
+            "source_evidence": "Implicitly handled by the model's internal loss function [Notebook]",
+            "current_implementation": "Explicitly multiplied with objectness from the intermediate tensors",
+            "match_status": "PARTIAL MATCH"
+        },
+        {
+            "id": 15,
+            "characteristic": "Bounding-box contribution",
+            "source_evidence": "The loss function enforces the patch to match a specific target bounding box [Notebook]",
+            "current_implementation": "Bounding box location is ignored (global maximization)",
+            "match_status": "MISMATCH"
+        },
+        {
+            "id": 16,
+            "characteristic": "Target class handling",
+            "source_evidence": "Supervised target label ('Person') [Notebook]",
+            "current_implementation": "Supervised target class (0 = 'ANIMALS')",
+            "match_status": "PARTIAL MATCH"
+        },
+        {
+            "id": 17,
+            "characteristic": "Confidence handling",
+            "source_evidence": "Evaluated at 0.7 score threshold [Notebook]",
+            "current_implementation": "Evaluated at 0.001 score threshold (for COCO AP) [Inference]",
+            "match_status": "MISMATCH"
+        },
+        {
+            "id": 18,
+            "characteristic": "NMS handling",
+            "source_evidence": "Standard NMS [Notebook]",
+            "current_implementation": "YOLOv7 NMS (IoU 0.65) [Inference]",
+            "match_status": "PARTIAL MATCH"
+        },
+        {
+            "id": 19,
+            "characteristic": "Image preprocessing",
+            "source_evidence": "Not explicitly detailed, presumed standard model normalization [Notebook]",
+            "current_implementation": "YOLOv7 letterbox and [0, 1] normalization",
+            "match_status": "PARTIAL MATCH"
+        },
+        {
+            "id": 20,
+            "characteristic": "Input resolution",
+            "source_evidence": "Dynamic based on input image [Notebook]",
+            "current_implementation": "416x416 fixed padding",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 21,
+            "characteristic": "Pixel constraints",
+            "source_evidence": "torch.clamp(patch.data, 0, 1) [Notebook]",
+            "current_implementation": "torch.clamp(patch.data, 0, 1)",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 22,
+            "characteristic": "Patch constraints",
+            "source_evidence": "None (other than pixel bounds) [Notebook]",
+            "current_implementation": "None",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 23,
+            "characteristic": "Randomness",
+            "source_evidence": "Patch initialization is random [Notebook]",
+            "current_implementation": "Patch initialization is random",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 24,
+            "characteristic": "Random seed",
+            "source_evidence": "Not explicitly specified in generate_attack [Notebook]",
+            "current_implementation": "Not explicitly specified",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 25,
+            "characteristic": "Transformation/augmentation",
+            "source_evidence": "None during attack generation [Notebook]",
+            "current_implementation": "None (augment=False) during attack generation",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 26,
+            "characteristic": "Patch application procedure",
+            "source_evidence": "Direct spatial assignment (attacked_image[:,:,y1:y2,x1:x2] = patch) [Notebook]",
+            "current_implementation": "Same",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 27,
+            "characteristic": "Whether the patch is universal or image-specific",
+            "source_evidence": "Image-specific (optimized per image) [Notebook]",
+            "current_implementation": "Image-specific",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 28,
+            "characteristic": "Whether attack optimization is performed per image or jointly",
+            "source_evidence": "Per image [Notebook]",
+            "current_implementation": "Per image",
+            "match_status": "MATCH"
+        },
+        {
+            "id": 29,
+            "characteristic": "Attack success criterion",
+            "source_evidence": "Visual presence of false positive detection [Notebook]",
+            "current_implementation": "Degradation in mAP@0.50 [Inference evaluation]",
+            "match_status": "MISMATCH"
+        },
+        {
+            "id": 30,
+            "characteristic": "Evaluation metric",
+            "source_evidence": "mAP@0.50 [Paper]",
+            "current_implementation": "mAP@0.50 via COCO API",
+            "match_status": "MATCH"
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "experiment": {
+        "dataset": "GTSDB",
+        "test_images": 54,
+        "gt_annotations": 82,
+        "detector": "YOLOv7",
+        "checkpoint": "experiments/yolov7_gtsdb/run/weights/best.pt",
+        "checkpoint_sha256": "fdc2e7a23f33ab3639fb325cd84ab405a477233dfad72e59358dcd91941aabb6"
+    },
+    "defense": {
+        "method": "AntiStyler",
+        "feature_extractor": "VGG19",
+        "style_layers": ["relu1_1", "relu2_1", "relu3_1", "relu4_1", "relu5_1"],
+        "content_layer": "relu4_2",
+        "alpha": 1,
+        "beta": 1000,
+        "optimization_steps": 1,
+        "padding": 10
+    },
+    "results": {
+        "clean": {
+            "mAP_0.50": 0.316,
+            "precision": 0.416,
+            "recall": 0.441,
+            "mAP_0.50_0.95": 0.201,
+            "AP75": "NOT AVAILABLE",
+            "detections": 12525
+        },
+        "attacked": {
+            "mAP_0.50": 0.077,
+            "precision": 0.127,
+            "recall": 0.144,
+            "mAP_0.50_0.95": 0.046,
+            "AP75": 0.057,
+            "detections": 16200
+        },
+        "defended": {
+            "mAP_0.50": 0.234,
+            "precision": 0.455,
+            "recall": 0.265,
+            "mAP_0.50_0.95": 0.147,
+            "AP75": 0.171,
+            "detections": 15633
+        }
+    },
+    "summary": {
+        "attack_degradation": 0.239,
+        "defense_recovery": 0.157,
+        "recovery_percentage": 65.69,
+        "defended_relative_to_clean": 74.05
+    },
+    "timing": {
+        "mean_antistyler_ms": 125.57,
+        "mean_yolov7_ms": 16.9,
+        "mean_pipeline_ms": 142.47,
+        "fps": 7.02
+    }
+}

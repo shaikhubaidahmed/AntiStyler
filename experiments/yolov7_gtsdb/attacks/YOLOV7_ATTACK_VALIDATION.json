@@ -1,0 +1,7 @@
+{
+    "clean_mAP50": 0.428620803527786,
+    "attacked_mAP50": 0.21524240760454316,
+    "difference": 0.21337839592324285,
+    "optimization_time": 8.02,
+    "inference_time": 0.017
+}

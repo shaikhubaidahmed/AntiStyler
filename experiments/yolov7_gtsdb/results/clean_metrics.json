@@ -1,0 +1,51 @@
+{
+    "mAP_0.50": 0.314,
+    "mAP_0.50_0.95": 0.201,
+    "Precision": 0.416,
+    "Recall": 0.441,
+    "Class_Metrics": {
+        "ANIMALS": {"Precision": 1.0, "Recall": 0.0, "mAP_0.50": 0.111, "mAP_0.50_0.95": 0.0332},
+        "CONSTRUCTION": {"Precision": 0.0568, "Recall": 0.333, "mAP_0.50": 0.136, "mAP_0.50_0.95": 0.115},
+        "CYCLES CROSSING": {"Precision": 0.826, "Recall": 1.0, "mAP_0.50": 0.995, "mAP_0.50_0.95": 0.896},
+        "DANGER": {"Precision": 0.0, "Recall": 0.0, "mAP_0.50": 0.0, "mAP_0.50_0.95": 0.0},
+        "NO ENTRY": {"Precision": 1.0, "Recall": 0.0, "mAP_0.50": 0.0192, "mAP_0.50_0.95": 0.00383},
+        "STOP": {"Precision": 0.296, "Recall": 1.0, "mAP_0.50": 0.995, "mAP_0.50_0.95": 0.796},
+        "bend right": {"Precision": 1.0, "Recall": 0.0, "mAP_0.50": 0.199, "mAP_0.50_0.95": 0.0796},
+        "give way": {"Precision": 0.274, "Recall": 1.0, "mAP_0.50": 0.995, "mAP_0.50_0.95": 0.597},
+        "go right or straight": {"Precision": 0.0, "Recall": 0.0, "mAP_0.50": 0.0356, "mAP_0.50_0.95": 0.0142},
+        "go right": {"Precision": 0.125, "Recall": 1.0, "mAP_0.50": 0.124, "mAP_0.50_0.95": 0.0995},
+        "go straight": {"Precision": 0.0, "Recall": 0.0, "mAP_0.50": 0.0381, "mAP_0.50_0.95": 0.0267},
+        "keep left": {"Precision": 0.173, "Recall": 1.0, "mAP_0.50": 0.745, "mAP_0.50_0.95": 0.472},
+        "keep right": {"Precision": 0.228, "Recall": 0.714, "mAP_0.50": 0.446, "mAP_0.50_0.95": 0.32},
+        "no overtaking (trucks)": {"Precision": 0.0348, "Recall": 0.25, "mAP_0.50": 0.0262, "mAP_0.50_0.95": 0.0149},
+        "no overtaking": {"Precision": 0.226, "Recall": 1.0, "mAP_0.50": 0.995, "mAP_0.50_0.95": 0.223},
+        "no traffic both ways": {"Precision": 1.0, "Recall": 0.0, "mAP_0.50": 0.0525, "mAP_0.50_0.95": 0.0258},
+        "no trucks": {"Precision": 1.0, "Recall": 0.0, "mAP_0.50": 0.0, "mAP_0.50_0.95": 0.0},
+        "priority at next intersection": {"Precision": 0.111, "Recall": 0.667, "mAP_0.50": 0.271, "mAP_0.50_0.95": 0.225},
+        "priority road": {"Precision": 0.594, "Recall": 0.333, "mAP_0.50": 0.335, "mAP_0.50_0.95": 0.268},
+        "restriction ends -overtaking-": {"Precision": 1.0, "Recall": 0.0, "mAP_0.50": 0.0, "mAP_0.50_0.95": 0.0},
+        "restriction ends": {"Precision": 1.0, "Recall": 0.0, "mAP_0.50": 0.0, "mAP_0.50_0.95": 0.0},
+        "road narrows": {"Precision": 1.0, "Recall": 0.0, "mAP_0.50": 0.0, "mAP_0.50_0.95": 0.0},
+        "slippery road": {"Precision": 0.105, "Recall": 1.0, "mAP_0.50": 0.249, "mAP_0.50_0.95": 0.199},
+        "speed limit 100": {"Precision": 0.435, "Recall": 0.375, "mAP_0.50": 0.383, "mAP_0.50_0.95": 0.244},
+        "speed limit 120": {"Precision": 0.235, "Recall": 0.667, "mAP_0.50": 0.363, "mAP_0.50_0.95": 0.114},
+        "speed limit 30": {"Precision": 0.074, "Recall": 0.4, "mAP_0.50": 0.137, "mAP_0.50_0.95": 0.0943},
+        "speed limit 50": {"Precision": 0.24, "Recall": 0.8, "mAP_0.50": 0.446, "mAP_0.50_0.95": 0.239},
+        "speed limit 70": {"Precision": 0.123, "Recall": 0.37, "mAP_0.50": 0.166, "mAP_0.50_0.95": 0.124},
+        "speed limit 80": {"Precision": 0.222, "Recall": 1.0, "mAP_0.50": 0.618, "mAP_0.50_0.95": 0.42},
+        "traffic signal": {"Precision": 0.117, "Recall": 0.25, "mAP_0.50": 0.245, "mAP_0.50_0.95": 0.141},
+        "uneven road": {"Precision": 0.398, "Recall": 0.5, "mAP_0.50": 0.62, "mAP_0.50_0.95": 0.434}
+    },
+    "Evaluation Protocol": {
+        "mAP Metric": "YOLOv7 test.py default",
+        "Confidence Threshold": 0.001,
+        "NMS IoU Threshold": 0.65,
+        "Image Resolution": [416, 416]
+    },
+    "Timing": {
+        "Inference Time per Image (ms)": 13.3,
+        "NMS Time per Image (ms)": 1.6,
+        "Total Time per Image (ms)": 14.9,
+        "Batch Size": 16
+    }
+}

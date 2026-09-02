@@ -1,0 +1,46 @@
+{
+    "experiment_id": "YOLOv7_DPatch_Full_GTSDB",
+    "dataset": "GTSDB",
+    "test_images": 54,
+    "gt_annotations": 82,
+    "detector": "YOLOv7",
+    "checkpoint": "experiments/yolov7_gtsdb/run/weights/best.pt",
+    "checkpoint_sha256": "fdc2e7a23f33ab3639fb325cd84ab405a477233dfad72e59358dcd91941aabb6",
+    "attack_config": {
+        "type": "YOLOv7 DPatch",
+        "patch_size": "100x100",
+        "patch_location": "Bottom-right quadrant",
+        "epochs": 200,
+        "optimizer": "Adam",
+        "learning_rate": 0.1,
+        "target_class": 0,
+        "image_resolution": "416x416"
+    },
+    "evaluation": {
+        "confidence_threshold": 0.001,
+        "nms_iou": 0.65
+    },
+    "metrics": {
+        "clean": {
+            "mAP_0.50": 0.316,
+            "mAP_0.50_0.95": 0.201,
+            "precision": 0.416,
+            "recall": 0.441,
+            "detections": 12525,
+            "inference_time_ms": 13.3
+        },
+        "attacked": {
+            "mAP_0.50": 0.077,
+            "mAP_0.50_0.95": 0.046,
+            "AP75": 0.057,
+            "precision": 0.127,
+            "recall": 0.144,
+            "detections": 16200,
+            "inference_time_ms": 14.2
+        },
+        "degradation": {
+            "absolute_mAP_0.50": 0.239,
+            "relative_mAP_0.50_pct": 75.63
+        }
+    }
+}

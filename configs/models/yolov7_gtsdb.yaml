@@ -30,7 +30,7 @@ iou_threshold: 0.65      # NMS IoU threshold for evaluation
 # Consider disabling mosaic/mixup if double-augmentation degrades performance
 
 # Reproducibility
-seed: 42
+seed: "YOLOv7 default (init_seeds(1) based on rank)"
 
 # Hardware
 device: "0"              # GPU device ID
