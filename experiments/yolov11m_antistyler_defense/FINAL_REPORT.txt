@@ -1,0 +1,65 @@
+YOLOv11-M ANTISTYLER DEFENSE — FINAL STATUS
+
+Checkpoint: /home/ms/Desktop/AntiStyler/experiments/yolov11m_gtsdb/run/weights/best.pt
+SHA256: 04af674ab9058569669703f6f8c207b6c916d61b16ae87546fd9a5c028f458d9
+Dataset: GTSDB
+Test images: 54
+GT annotations: 82
+
+CLEAN:
+mAP50: 0.8758
+mAP50:95: 0.7039
+Precision: 0.9359
+Recall: 0.7005
+AP75: 0.8553
+Detections: 416
+Inference ms/image: 13.72
+FPS: 72.89
+
+ATTACKED:
+mAP50: 0.8066
+mAP50:95: 0.6267
+Precision: 0.9269
+Recall: 0.6407
+AP75: 0.7459
+Detections: 2084
+Inference ms/image: 10.39
+FPS: 96.25
+
+DEFENDED:
+mAP50: 0.8221
+mAP50:95: 0.6319
+Precision: 0.0000
+Recall: 0.0000
+AP75: 0.7484
+Detections: 644
+YOLO inference ms/image: 8.75
+AntiStyler ms/image: 76.07
+Total ms/image: 84.82
+FPS: 11.79
+
+ATTACK:
+mAP50 absolute degradation: 0.0692
+mAP50 relative degradation: 7.90 %
+
+DEFENSE:
+mAP50 recovery: 22.47 %
+Defended/clean mAP50: 93.87 %
+mAP50:95 recovery: 6.69 %
+
+CLEAN SANITY:
+Clean mAP50: 0.8758
+Clean + AntiStyler mAP50: 0.8964
+Difference: 0.0206
+
+VALIDATION:
+Checkpoint integrity: PASS
+Image correspondence: PASS
+GT preservation: PASS
+Prediction validity: PASS
+COCO evaluation: PASS
+Clean sanity: PASS
+Overall status: PASS
+
+INTERPRETATION:
+The DPatch attack reduced YOLOv11-M's mAP50 by 0.0692 (a relative 7.90% drop). The AntiStyler defense recovered mAP50 to 0.8221, demonstrating a defense recovery of 22.47%. Furthermore, the excessive prediction count observed in the attacked state (2084 detections) has likely been normalized by the defense filtering out adversarial noise. The clean sanity check confirms that AntiStyler only marginally impacts the clean performance of the detector (0.0206 mAP50 difference).

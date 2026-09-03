@@ -1,0 +1,6 @@
+- `[/]` Implement YOLOv9-M specific DPatch attack (`attacks/yolov9_patch_attack.py`).
+- `[ ]` Implement experiment runner (`scripts/yolov9_dpatch_experiment.py`).
+- `[ ]` Execute small-scale validation.
+- `[ ]` Execute full 54-image generation.
+- `[ ]` Evaluate attacked images and format results.
+- `[ ]` Create `experiments/yolov9m_gtsdb/YOLOV9M_DPATCH_REPORT.md` and print final output.

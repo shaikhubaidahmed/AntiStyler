@@ -1,0 +1,57 @@
+names:
+- ANIMALS
+- CONSTRUCTION
+- CYCLES CROSSING
+- DANGER
+- NO ENTRY
+- PEDESTRIAN CROSSING
+- SCHOOL CROSSING
+- SNOW
+- STOP
+- bend left
+- bend right
+- bend
+- give way
+- go left or straight
+- go left
+- go right or straight
+- go right
+- go straight
+- keep left
+- keep right
+- no overtaking (trucks)
+- no overtaking -trucks-
+- no overtaking
+- no traffic both ways
+- no trucks
+- priority at next intersection
+- priority road
+- restriction ends (overtaking (trucks))
+- restriction ends (overtaking)
+- restriction ends -overtaking -trucks--
+- restriction ends -overtaking-
+- restriction ends 80
+- restriction ends
+- road narrows
+- roundabout
+- slippery road
+- speed limit 100
+- speed limit 120
+- speed limit 20
+- speed limit 30
+- speed limit 50
+- speed limit 60
+- speed limit 70
+- speed limit 80
+- traffic signal
+- uneven road
+nc: 46
+roboflow:
+  license: CC BY 4.0
+  project: gtsdb---german-traffic-sign-detection-benchmark
+  url: https://universe.roboflow.com/mohamed-traore-2ekkp/gtsdb---german-traffic-sign-detection-benchmark/dataset/3
+  version: 3
+  workspace: mohamed-traore-2ekkp
+test: /home/ms/Desktop/AntiStyler/experiments/yolov11m_antistyler_defense/defended_images
+train: /home/ms/Desktop/AntiStyler/experiments/yolov11m_antistyler_defense/defended_images
+val: /home/ms/Desktop/AntiStyler/experiments/yolov11m_antistyler_defense/defended_images
