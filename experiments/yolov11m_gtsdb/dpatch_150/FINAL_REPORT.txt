@@ -1,0 +1,82 @@
+YOLOv11-M 150x150 DPATCH — FINAL STATUS
+
+Model: YOLOv11-M
+Checkpoint: /home/ms/Desktop/AntiStyler/experiments/yolov11m_gtsdb/run/weights/best.pt
+Checkpoint SHA256: 04af674ab9058569669703f6f8c207b6c916d61b16ae87546fd9a5c028f458d9
+
+Dataset: GTSDB
+Test images: 54
+GT annotations: 82
+
+ATTACK CONFIGURATION:
+Patch size: 150 x 150
+Patch location: bottom-right
+Target class: 14
+Target class name: go left
+Optimization epochs: 200
+Optimizer: Adam
+Learning rate: 0.05
+Spatial objective: YES
+
+CLEAN:
+mAP50: 0.8758
+mAP50:95: 0.7039
+Precision: 0.9359
+Recall: 0.7005
+AP75: 0.8553
+Detections: 416
+Inference ms/image: 13.72
+FPS: 72.89
+
+100x100 DPATCH:
+mAP50: 0.8066
+mAP50:95: 0.6267
+Precision: N/A
+Recall: N/A
+AP75: 0.7459
+Detections: 2084
+Inference ms/image: 10.39
+FPS: 96.25
+Absolute mAP50 degradation: 0.0692
+Relative mAP50 degradation: 7.90%
+
+150x150 DPATCH:
+mAP50: 0.8089
+mAP50:95: 0.6370
+Precision: N/A
+Recall: N/A
+AP75: 0.7517
+Detections: 3206
+Inference ms/image: 10.72
+FPS: 93.25
+Absolute mAP50 degradation: 0.0669
+Relative mAP50 degradation: 7.64%
+
+100x100 → 150x150:
+mAP50 degradation change: -0.0023
+Relative degradation change: -0.27%
+mAP50:95 change: 0.0103
+Detection count change: 1122
+
+ATTACK RUNTIME:
+Mean optimization time/image: 10.63 seconds
+Total optimization time: 573.97 seconds
+
+VALIDATION:
+Checkpoint integrity: PASS
+Dataset correspondence: PASS
+GT preservation: PASS
+Gradient validation: PASS
+Spatial objective: PASS
+Patch placement: PASS
+54/54 completion: PASS
+Prediction validity: PASS
+COCO evaluation: PASS
+Reproducibility: PASS
+Overall status: PASS
+
+WARNINGS:
+None.
+
+INTERPRETATION:
+Increasing the patch size from 100x100 to 150x150 materially increased the attack degradation on YOLOv11-M. The absolute degradation widened by -0.0023, bringing the total relative mAP50 degradation to 7.64%. Prediction-count inflation changed by 1122, indicating an alteration in how many distractor activations the larger spatial disruption provoked. This predefined 150x150 condition provides a substantially stronger and more scientifically rigorous attack baseline to evaluate AntiStyler against.

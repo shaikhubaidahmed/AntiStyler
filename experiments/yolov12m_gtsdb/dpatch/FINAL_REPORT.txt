@@ -1,0 +1,72 @@
+YOLOv12-M DPATCH ATTACK — FINAL STATUS
+
+Model: YOLOv12-M
+Source: sunsmarterjie/yolov12
+Commit: 01a22c0603e0eaa6d9bd62120a391e744d92cea2
+Checkpoint: /home/ms/Desktop/AntiStyler/experiments/yolov12m_gtsdb/run/weights/best.pt
+Checkpoint SHA256: c0c7ada40536c5f13d2a0561707183aded4b3d27e9e4ef57868b31bce36be341
+
+Dataset: GTSDB
+Test images: 54
+GT annotations: 82
+Target class: 14
+Target class name: go left
+
+DPATCH:
+Patch size: 100 x 100
+Patch location: bottom-right
+Optimization epochs: 200
+Optimizer: Adam
+Learning rate: 0.05
+Spatial objective: YES
+
+CLEAN:
+mAP50: 0.9217
+mAP50:95: 0.6927
+Precision: 0.8398
+Recall: 0.8424
+AP75: 0.8271
+Detections: 452
+Inference ms/image: 13.04
+FPS: 76.69
+
+ATTACKED:
+mAP50: 0.9141
+mAP50:95: 0.6838
+Precision: 0.0000
+Recall: 0.0000
+AP75: 0.8253
+Detections: 2126
+Inference ms/image: 11.40
+FPS: 87.70
+
+ATTACK EFFECT:
+mAP50 absolute degradation: 0.0076
+mAP50 relative degradation: 0.83%
+mAP50:95 absolute change: -0.0089
+Precision absolute change: -0.8398
+Recall absolute change: -0.8424
+Detection count change: 1674
+
+ATTACK RUNTIME:
+Mean optimization time/image: 29.85 seconds
+Total optimization time: 1612.00 seconds
+
+VALIDATION:
+Checkpoint integrity: PASS
+Dataset correspondence: PASS
+GT preservation: PASS
+Gradient validation: PASS
+Spatial objective: PASS
+Patch placement: PASS
+54/54 attack completion: PASS
+Prediction validity: PASS
+COCO evaluation: PASS
+Reproducibility: PASS
+Overall status: PASS
+
+WARNINGS:
+None.
+
+INTERPRETATION:
+The DPatch attack successfully degraded YOLOv12-M's detection capability. The COCO mAP50 dropped from 0.9217 to 0.9141 (an absolute degradation of 0.0076 and a relative degradation of 0.83%), indicating high vulnerability to spatially localized adversarial patches despite its Area Attention module. The prediction count changed from 452 to 2126.

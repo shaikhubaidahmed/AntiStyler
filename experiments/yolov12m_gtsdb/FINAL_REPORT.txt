@@ -1,0 +1,54 @@
+YOLOv12-M CLEAN BASELINE — FINAL STATUS
+
+Model: YOLOv12-M
+Source: https://github.com/sunsmarterjie/yolov12.git
+Commit: 01a22c0603e0eaa6d9bd62120a391e744d92cea2
+Pretrained checkpoint: /home/ms/Desktop/AntiStyler/yolo12m.pt
+Pretrained SHA256: 4c6d179786eddf6134ee469ae2f4ce04cbe4e9d1a47d6b669d9cd6b9c6c513d8
+Best checkpoint: /home/ms/Desktop/AntiStyler/experiments/yolov12m_gtsdb/run/weights/best.pt
+Best checkpoint SHA256: c0c7ada40536c5f13d2a0561707183aded4b3d27e9e4ef57868b31bce36be341
+Parameter count: 20201216
+
+Dataset: GTSDB
+Classes: 46
+Class 14: go left
+Test images: 54
+GT annotations: 82
+
+Training:
+Epochs: 100
+Batch size: 8
+Input size: 416 x 416
+Training duration: 4990.90 seconds
+GPU: Quadro RTX 4000
+
+CLEAN TEST RESULTS:
+COCO mAP50: 0.9217
+COCO mAP50:95: 0.6927
+Precision: 0.8398
+Recall: 0.8424
+AP75: 0.8271
+Detections: 452
+Inference ms/image: 13.04
+FPS: 76.69
+
+NATIVE YOLO RESULTS:
+Native mAP50: 0.9192
+Native mAP50:95: 0.6956
+Native/COCO mAP50 difference: -0.0025
+
+VALIDATION:
+Checkpoint integrity: PASS
+Dataset correspondence: PASS
+GT preservation: PASS
+Prediction validity: PASS
+COCO evaluation: PASS
+Class mapping: PASS
+Reproducibility: PASS
+Overall status: PASS
+
+WARNINGS:
+None.
+
+INTERPRETATION:
+The YOLOv12-M clean baseline model successfully converged on GTSDB, achieving a very strong COCO mAP50 of 0.9217. The extremely small numerical difference between native and COCO evaluation metrics (-0.0025) indicates a correct and precise configuration of the test set splits and bounding boxes. The inference metrics demonstrate YOLOv12-M's efficiency, positioning it as a highly capable baseline before adversarial analysis.

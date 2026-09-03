@@ -67,3 +67,4 @@ outputs/
 .vscode/
 *.swp
 *.swo
+*.cache

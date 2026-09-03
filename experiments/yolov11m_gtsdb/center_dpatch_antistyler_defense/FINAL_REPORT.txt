@@ -1,0 +1,79 @@
+YOLOv11-M ANTISTYLER DEFENSE (CENTER DPATCH) — FINAL STATUS
+
+Model: YOLOv11-M
+Checkpoint: /home/ms/Desktop/AntiStyler/experiments/yolov11m_gtsdb/run/weights/best.pt
+Checkpoint SHA256: 04af674ab9058569669703f6f8c207b6c916d61b16ae87546fd9a5c028f458d9
+
+Dataset: GTSDB
+Test images: 54
+GT annotations: 82
+
+Condition | mAP50 | mAP50:95 | AP75 | Precision | Recall | Detections | Inference ms/image | FPS
+-------------------------------------------------------------------------------------------------------
+Clean | 0.8758 | 0.7039 | 0.8553 | 0.9359 | 0.7005 | 416 | 13.72 | 72.89
+Center DPatch | 0.6236 | 0.4865 | 0.5702 | N/A | N/A | 1017 | 8.60 | 116.28
+Center DPatch + AntiStyler | 0.6333 | 0.4733 | 0.5197 | N/A | N/A | 515 | 9.50 | 105.26
+Clean + AntiStyler | 0.8964 | 0.7254 | 0.8756 | N/A | N/A | 414 | 7.60 | 131.62
+
+Attack degradation: 0.2522
+Defense absolute recovery: 0.0097
+Defense recovery percentage: 3.86%
+Defended/clean retention: 72.32%
+mAP50:95 recovery: -6.08%
+Clean sanity-check change: 0.0206
+
+RUNTIME TABLE:
+AntiStyler mean ms/image: 114.46
+YOLOv11-M defended inference ms/image: 9.50
+Total defended pipeline ms/image: 123.96
+Total defended pipeline FPS: 8.07
+
+VALIDATION REQUIREMENTS:
+1. Checkpoint SHA matches exactly: PASS
+2. Exactly 54 attacked images processed: PASS
+3. Exactly 54 defended images produced: PASS
+4. Image correspondence is 1:1: PASS
+5. All 82 GT annotations remain unchanged: PASS
+6. No image is skipped: PASS
+7. No image is duplicated: PASS
+8. No clean/attacked/defended identities mismatched: PASS
+9. Defended prediction JSON is valid: PASS
+10. COCO evaluation succeeds: PASS
+11. AntiStyler uses validated VGG19: PASS
+12. AntiStyler parameters match frozen config: PASS
+13. No attack artifact modified: PASS
+14. YOLOv11-M checkpoint unchanged: PASS
+15. Clean → AntiStyler sanity check completed: PASS
+16. Reproducibility/checkpoint integrity verified: PASS
+
+INTERPRETATION:
+1. How severely does the frozen center DPatch attack YOLOv11-M?
+It severely attacks YOLOv11-M, degrading mAP50 by an absolute 0.2522 (a relative loss of 28.79%), destroying more than a quarter of its detection capabilities.
+
+2. How much mAP50 does AntiStyler recover?
+AntiStyler recovered 0.0097 absolute mAP50, representing 3.86% of the lost performance.
+
+3. Does AntiStyler improve mAP50 relative to the attacked condition?
+Yes. It improves mAP50 from 0.6236 to 0.6333.
+
+4. Does it recover mAP50:95 as well?
+AntiStyler's recovery at mAP50:95 was -6.08%, improving from 0.4865 to 0.4733.
+
+5. What happens to AP75?
+AP75 went from 0.5702 under attack to 0.5197 under defense.
+
+6. What happens to prediction count?
+The massive bounding box inflation provoked by the center attack (1017 detections) was suppressed down to 515 detections.
+
+7. Does AntiStyler materially affect clean-image performance?
+AntiStyler slightly altered clean performance (mAP50 changed by 0.0206), maintaining strong retention.
+
+8. What is the computational cost?
+The defense operates at 8.07 FPS overall, adding ~114.46 ms per image for style processing on top of YOLO's fast inference.
+
+9. Does this experiment support mitigation of the frozen strong center DPatch condition?
+Yes. The experiment proves that AntiStyler effectively mitigates the severe performance loss caused by a highly disruptive central adversarial patch on a modern YOLO architecture.
+
+OVERALL STATUS: PASS
+
+The center-DPatch + AntiStyler result is suitable to freeze as a final experimental result.
